@@ -1,66 +1,34 @@
 # Jumbo
 
-_A better jump command for Vim_
-
-Readable code groups related statements together,
-and separates these groups by empty lines from each other.
-To make it easy to distinguish methods from such code blocks,
-and to give code some room to breathe,
-its best to separate methods with 2 empty lines.
-Like so:
-
-```coffeescript
-createAccount: (email, age, done) ->
-  return done "You are too young" if age < 18
-  return done "Invalid email" if isInvalidEmail(email)
-
-  createUser {email, age}, (err, user) ->
-    return done "Internal server error" if err
-
-    user.sendWelcomeEmail()
-    user.setTrialMembership()
-    user.giveWelcomeCredits()
-
-
-deleteAccount: (email, done) ->
-  return done "No email given" if isInvalidEmail(email)
-
-  user.endMembership()
-  user.payoutCredits()
-  user.sendGoodbyeEmail()
-
-  deleteUser {email}, done
-
-
-renewAccount: (email, period, done) ->
-  # ...
-```
-
-If this is your style, and you use Vim,
-Jumbo provides two new VimL methods called
-`JumpToNextMethod` and `jumpToPreviousMethod`
-that allow to navigate very intuitively by jumping to the next/previous
-method.
+Separating methods with 2 empty lines makes code not only more readable,
+it also allows Vim users to jump to the next/previous method using this plugin.
 
 
 ## Installation
 
-#### Vundle users
+This is a normal Vim plugin.
+Install it like you install all your other plugins.
+
+
+##### Vundle users
 
 * add `Bundle 'kevgo/jumbo'` to your .vimrc file
-* run `:BundleInstall` from within Vim
+* restart Vim and run `:BundleInstall`
 
-#### Pathogen users
+##### Pathogen users
 
-`git clone git://github.com/kevgo/jumbo.git ~/.vim/bundle`
+* `git clone git://github.com/kevgo/jumbo.git ~/.vim/bundle`
+* restart Vim
 
 
 #### Activation in Vim
 
-To replace the normal `{` and `}` commands with Jumbo:
+Jumbo provids the two VimL methods `JumpToNextMethod` and `JumpToPreviousMethod`,
+which do exactly what their name says.
+
+To replace the normal `{` and `}` commands with Jumbo, add this to your `.vimrc` file:
 
 ```viml
 nnoremap { :call JumpToPreviousFunction()<CR>
 nnoremap } :call JumpToNextFunction()<CR>
 ```
-
