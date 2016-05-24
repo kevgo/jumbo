@@ -1,7 +1,7 @@
 " Helper method to move to the next line
 "
 " Returns whether we have reached the end of the file
-function MoveDown()
+function! MoveDown()
   let old_line_number=getpos('.')[1]
   normal j
   let new_line_number=getpos('.')[1]
@@ -17,7 +17,7 @@ endfunction
 " Helper method to move to the previous line
 "
 " Returns whether we have reached the end of the file
-function MoveUp()
+function! MoveUp()
   let old_line_number=getpos('.')[1]
   normal k
   let new_line_number=getpos('.')[1]
@@ -31,7 +31,7 @@ endfunction
 
 
 " Jumps to the beginning of the next function
-function JumpToPreviousFunction()
+function! JumpToPreviousFunction()
 
   " counts the number of consecutive empty lines encountered so far
   let empty_line_count=0
@@ -69,7 +69,7 @@ endfunction
 
 
 " Jumps to the end of the previous function
-function JumpToNextFunction()
+function! JumpToNextFunction()
 
   " counts the number of consecutive empty lines encountered so far
   let empty_line_count=0
